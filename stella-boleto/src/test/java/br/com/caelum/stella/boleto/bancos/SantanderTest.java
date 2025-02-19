@@ -27,8 +27,8 @@ public class SantanderTest {
 	@Before
 	public void setUp() {
 		
-	    Datas datas = Datas.novasDatas().comDocumento(29, 04, 2013)
-            .comProcessamento(29, 04, 2013).comVencimento(8, 05, 2013);  
+	    Datas datas = Datas.novasDatas().comDocumento(29, 04, 2033)
+            .comProcessamento(29, 04, 2033).comVencimento(8, 05, 2033);
 
 	    this.beneficiario = Beneficiario.novoBeneficiario().comNomeBeneficiario("PETROBRAS")
             .comAgencia("6790").comDigitoAgencia("0").comCarteira("102")
@@ -47,7 +47,7 @@ public class SantanderTest {
 
 	@Test 
 	public void testCodigoDeBarraDoBancoSantander() {
-		String string = "03392569200000219509526096510561374950140102";
+		String string = "03395399700000219509526096510561374950140102";
 		assertEquals(string, banco.geraCodigoDeBarrasPara(boleto));
 	}
 
@@ -74,7 +74,7 @@ public class SantanderTest {
 		boleto.comBeneficiario(beneficiario);
 		
 		assertThat(banco.geraCodigoDeBarrasPara(boleto),
-				is("03391569200000219509390312538271300047220102"));
+				is("03394399700000219509390312538271300047220102"));
 	}
 	
 	@Test

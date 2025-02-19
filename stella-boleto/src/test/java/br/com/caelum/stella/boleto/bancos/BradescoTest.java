@@ -19,8 +19,8 @@ public class BradescoTest {
 
 	@Before
 	public void setUp() {
-		Datas datas = Datas.novasDatas().comDocumento(31, 5, 2006).comProcessamento(31, 5, 2006)
-				.comVencimento(10, 6, 2006);
+		Datas datas = Datas.novasDatas().comDocumento(23, 12, 2032).comProcessamento(23, 12, 2032)
+				.comVencimento(23, 12, 2032);
 
 		this.beneficiario = Beneficiario.novoBeneficiario().comNomeBeneficiario("Leonardo Bessa")
 				.comAgencia("2949").comDigitoAgencia("1")
@@ -65,7 +65,7 @@ public class BradescoTest {
 		this.boleto = this.boleto.comBanco(this.banco);
 		GeradorDeLinhaDigitavel linhaDigitavelGenerator = new GeradorDeLinhaDigitavel();
 		String codigoDeBarras = boleto.getBanco().geraCodigoDeBarrasPara(this.boleto);
-		assertEquals("23792.94909  60000.000004  03000.658009  6  31680000000100",
+		assertEquals("23792.94909  60000.000004  03000.658009  8  38600000000100",
 				linhaDigitavelGenerator.geraLinhaDigitavelPara(codigoDeBarras,this.banco));
 	}
 
@@ -74,7 +74,7 @@ public class BradescoTest {
 		this.banco = new Bradesco();
 		this.boleto = this.boleto.comBanco(this.banco);
 
-		assertEquals("23796316800000001002949060000000000300065800", this.banco.geraCodigoDeBarrasPara(this.boleto));
+		assertEquals("23798386000000001002949060000000000300065800", this.banco.geraCodigoDeBarrasPara(this.boleto));
 	}
 
 	@Test

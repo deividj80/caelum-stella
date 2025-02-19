@@ -25,8 +25,8 @@ public class CaixaCarteira24Test {
 		// 4 (24)
 		// /////////////////////////////////////////////////////////////////
 
-		Datas datas = Datas.novasDatas().comDocumento(10, 07, 2014)
-				.comProcessamento(12, 12, 2014).comVencimento(10, 07, 2014);
+		Datas datas = Datas.novasDatas().comDocumento(23, 12, 2032)
+				.comProcessamento(21, 12, 2032).comVencimento(23, 12, 2032);
 
 		this.beneficiario = Beneficiario.novoBeneficiario()
 				.comNomeBeneficiario("Empresa A").comAgencia("3531")
@@ -67,13 +67,13 @@ public class CaixaCarteira24Test {
 	public void testLinhaDoBancoCaixaComCarteiraSIGCBSimples() {
 		GeradorDeLinhaDigitavel gerador = new GeradorDeLinhaDigitavel();
 		String codigoDeBarras = boleto.getBanco().geraCodigoDeBarrasPara(this.boleto);
-		String linha = "10495.03665  23000.200040  00000.000604  8  61200000000123";
+		String linha = "10495.03665  23000.200040  00000.000604  3  38600000000123";
 		assertEquals(linha, gerador.geraLinhaDigitavelPara(codigoDeBarras, this.banco));
 	}
 
 	@Test
 	public void testCodigoDeBarraDoBancoCaixaComCarteiraSIGCBSimples() {
-		assertEquals("10498612000000001235036623000200040000000060", this.banco.geraCodigoDeBarrasPara(this.boleto));
+		assertEquals("10493386000000001235036623000200040000000060", this.banco.geraCodigoDeBarrasPara(this.boleto));
 	}
 
 	@Test

@@ -36,8 +36,8 @@ public class BoletoTransformerIntegrationTest{
 
 		apagaArquivosGerados();
 
-		Datas datas = Datas.novasDatas().comDocumento(4, 5, 2008).comProcessamento(4, 5, 2008)
-				.comVencimento(2, 5, 2008);
+		Datas datas = Datas.novasDatas().comDocumento(4, 5, 2028).comProcessamento(4, 5, 2028)
+				.comVencimento(2, 5, 2028);
 		Beneficiario beneficiario = Beneficiario.novoBeneficiario().comNomeBeneficiario("Caue").comAgencia("1824").comDigitoAgencia("4")
 				.comCodigoBeneficiario("76000").comNumeroConvenio("1207113").comDigitoCodigoBeneficiario("5").comCarteira("18")
 				.comNossoNumero("12071130009000206");
@@ -88,8 +88,7 @@ public class BoletoTransformerIntegrationTest{
 		PDDocument document = PDDocument.load(new File("arquivo.pdf"));
 		String text = stripper.getText(document);
 		document.close();
-
-		assertTrue(text.contains("00190.00009  01207.113000  09000.206186  5  38600000004000"));
+		assertTrue(text.contains("00190.00009  01207.113000  09000.206186  4  21650000004000"));
 	}
 
 	@Test

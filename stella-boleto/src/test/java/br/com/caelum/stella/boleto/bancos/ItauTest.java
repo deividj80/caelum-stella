@@ -22,8 +22,8 @@ public class ItauTest {
 	@Before
 	public void setUp() {
 		
-	    Datas datas = Datas.novasDatas().comDocumento(20, 03, 2013)
-	            .comProcessamento(20, 03, 2013).comVencimento(01, 04, 2013);  
+	    Datas datas = Datas.novasDatas().comDocumento(20, 03, 2033)
+	            .comProcessamento(20, 03, 2033).comVencimento(01, 04, 2033);
 
 		    this.beneficiario = Beneficiario.novoBeneficiario().comNomeBeneficiario("Rodrigo Turini")
 	            .comAgencia("167").comCarteira("157").comCodigoBeneficiario("45145")
@@ -64,20 +64,20 @@ public class ItauTest {
 		this.boleto = this.boleto.comBanco(this.banco);
 		GeradorDeLinhaDigitavel gerador = new GeradorDeLinhaDigitavel();
 		String codigoDeBarras = boleto.getBanco().geraCodigoDeBarrasPara(this.boleto);
-		String linha = "34191.57213  89766.660164  74514.590004  6  56550000268016";
+		String linha = "34191.57213  89766.660164  74514.590004  9  39600000268016";
 		assertEquals(linha, gerador.geraLinhaDigitavelPara(codigoDeBarras,this.banco));
 	}
 
 	@Test
 	public void testCodigoDeBarraDoBancoItau() {
 		String codigoDeBarras = this.banco.geraCodigoDeBarrasPara(this.boleto);
-		assertEquals("34196565500002680161572189766660167451459000", codigoDeBarras);
+		assertEquals("34199396000002680161572189766660167451459000", codigoDeBarras);
 	}
 	
 	@Test
 	public void testLinhaDoBancoItau2() {
-		 Datas datas = Datas.novasDatas().comDocumento(20, 03, 2014)
-		            .comProcessamento(20, 03, 2014).comVencimento(10, 04, 2014); 
+		 Datas datas = Datas.novasDatas().comDocumento(20, 03, 2034)
+		            .comProcessamento(20, 03, 2034).comVencimento(10, 04, 2034);
 		
 		this.beneficiario = Beneficiario.novoBeneficiario().comNomeBeneficiario("Mario Amaral")
 				.comAgencia("8462").comCarteira("174").comCodigoBeneficiario("05825")
@@ -92,7 +92,7 @@ public class ItauTest {
 		this.boleto = this.boleto.comBanco(this.banco);
 		GeradorDeLinhaDigitavel gerador = new GeradorDeLinhaDigitavel();
 		String codigoDeBarras = boleto.getBanco().geraCodigoDeBarrasPara(this.boleto);
-		String linha = "34191.74002  01513.568467  20582.590004  6  60290000268016";
+		String linha = "34191.74002  01513.568467  20582.590004  9  43340000268016";
 		assertEquals(linha, gerador.geraLinhaDigitavelPara(codigoDeBarras,this.banco));
 	}
 

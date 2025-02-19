@@ -24,8 +24,8 @@ public class HSBCTest {
 	@Before
 	public void setUp() {
 
-		Datas datas = Datas.novasDatas().comDocumento(28,1,2013)
-				.comProcessamento(29,1,2013).comVencimento(30,1,2013);
+		Datas datas = Datas.novasDatas().comDocumento(28,1,2033)
+				.comProcessamento(29,1,2033).comVencimento(30,1,2033);
 
 		Beneficiario beneficiario = Beneficiario.novoBeneficiario().comNomeBeneficiario("Rodrigo Turini")
 			.comCodigoBeneficiario("4146239").comNossoNumero("1476147");
@@ -40,7 +40,7 @@ public class HSBCTest {
 	@Test
 	public void testLinhaDoBancoHSBC() {
 		String codigoDeBarras = boleto.getBanco().geraCodigoDeBarrasPara(this.boleto);
-		assertEquals("39994.14620  39000.000149  76147.030324  5  55940000338300",
+		assertEquals("39994.14620  39000.000149  76147.030324  2  38980000338300",
 			new GeradorDeLinhaDigitavel().geraLinhaDigitavelPara(codigoDeBarras,this.banco));
 	}
 
@@ -54,14 +54,14 @@ public class HSBCTest {
 	public void testCodigoDeBarraDoBancoHSBC() {
 		this.boleto = this.boleto.comBanco(this.banco);
 		String codigoDeBarras = this.banco.geraCodigoDeBarrasPara(this.boleto);
-		assertEquals("39995559400003383004146239000000147614703032", codigoDeBarras);
+		assertEquals("39992389800003383004146239000000147614703032", codigoDeBarras);
 	}
 	
 	@Test
 	public void testDigitosNossoNumeroHSBC(){
 		this.boleto = this.boleto.comBanco(this.banco);
 		String nossoNumeroCompleto = this.banco.getNossoNumeroECodigoDocumento(boleto);
-		assertEquals("0000001476147541", nossoNumeroCompleto);
+		assertEquals("0000001476147546", nossoNumeroCompleto);
 	}
 	
 	@Test

@@ -25,8 +25,8 @@ public class CaixaTest {
 		// SET UP de boleto com carteira SINCO
 		///////////////////////////////////////////////////////////////////
 
-		Datas datas = Datas.novasDatas().comDocumento(22, 04, 2013)
-			.comProcessamento(22, 04, 2013).comVencimento(29, 04, 2013);
+		Datas datas = Datas.novasDatas().comDocumento(22, 04, 2033)
+			.comProcessamento(22, 04, 2033).comVencimento(29, 04, 2033);
 
 		this.beneficiario = Beneficiario.novoBeneficiario().comNomeBeneficiario("Rodrigo Turini")
 			.comAgencia("2873").comCarteira("1")
@@ -43,8 +43,8 @@ public class CaixaTest {
 		// SET UP de boleto com carteira Sem Registro e Registrada no SIGCB
 		///////////////////////////////////////////////////////////////////
 		
-		Datas datasOutroBoleto = Datas.novasDatas().comDocumento(21, 8, 2012)
-				.comProcessamento(21, 8, 2012).comVencimento(04, 9, 2012);
+		Datas datasOutroBoleto = Datas.novasDatas().comDocumento(21, 8, 2032)
+				.comProcessamento(21, 8, 2032).comVencimento(04, 9, 2032);
 
 		Beneficiario beneficiario = Beneficiario.novoBeneficiario().comNomeBeneficiario("Guilherme")
 			.comAgencia("589").comCarteira("2")
@@ -81,13 +81,13 @@ public class CaixaTest {
 	public void testLinhaDoBancoCaixaComCarteiraSINCO() {
 		GeradorDeLinhaDigitavel gerador = new GeradorDeLinhaDigitavel();
 		String codigoDeBarras = boleto.getBanco().geraCodigoDeBarrasPara(this.boleto);
-		String linha = "10491.00231  59990.000008  00039.944582  2  56830000401610";
+		String linha = "10491.00231  59990.000008  00039.944582  5  39880000401610";
 		assertEquals(linha, gerador.geraLinhaDigitavelPara(codigoDeBarras,this.banco));
 	}
 
 	@Test
 	public void testCodigoDeBarraDoBancoCaixaComCarteiraSINCO() {
-		assertEquals("10492568300004016101002359990000000003994458",
+		assertEquals("10495398800004016101002359990000000003994458",
 				this.banco.geraCodigoDeBarrasPara(this.boleto));
 	}
 
@@ -95,13 +95,13 @@ public class CaixaTest {
 	public void testLinhaDoBancoCaixaComCarteiraSICGB() {
 		GeradorDeLinhaDigitavel gerador = new GeradorDeLinhaDigitavel();
 		String codigoDeBarras = outroBoleto.getBanco().geraCodigoDeBarrasPara(outroBoleto);
-		String linha = "10492.90271  45900.200044  00000.013227  9  54460000008000";
+		String linha = "10492.90271  45900.200044  00000.013227  1  37510000008000";
 		assertEquals(linha, gerador.geraLinhaDigitavelPara(codigoDeBarras,this.banco));
 	}
 
 	@Test
 	public void testCodigoDeBarraDoBancoCaixaComCarteiraSICGB() {
-		assertEquals("10499544600000080002902745900200040000001322",
+		assertEquals("10491375100000080002902745900200040000001322",
 				this.banco.geraCodigoDeBarrasPara(this.outroBoleto));
 	}
 	

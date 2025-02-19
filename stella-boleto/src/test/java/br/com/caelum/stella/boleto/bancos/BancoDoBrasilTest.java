@@ -25,8 +25,8 @@ public class BancoDoBrasilTest {
                 //Responsabilidade do desenvolvedor compor o nosso número
                 String nossoNumero = numeroConvenio + String.format("%010d", numeroComplemento);
                 
-		Datas datas = Datas.novasDatas().comDocumento(4, 5, 2008).comProcessamento(4, 5, 2008)
-				.comVencimento(2, 5, 2008);
+		Datas datas = Datas.novasDatas().comDocumento(23, 12, 2032).comProcessamento(23, 12, 2032)
+				.comVencimento(23, 12, 2032);
 		this.beneficiario = Beneficiario.novoBeneficiario().comNomeBeneficiario("Caue")
 				.comAgencia("1824").comDigitoAgencia("4")
 				.comCodigoBeneficiario("76000")

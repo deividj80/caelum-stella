@@ -59,8 +59,8 @@ public class BoletoHTMLTransformerIntegrationTest{
 		Locale.setDefault(new Locale("pt", "br"));
 
 		Boleto boleto;
-		Datas datas = Datas.novasDatas().comDocumento(4, 5, 2008).comProcessamento(4, 5, 2008)
-				.comVencimento(2, 5, 2008);
+		Datas datas = Datas.novasDatas().comDocumento(4, 5, 2028).comProcessamento(4, 5, 2028)
+				.comVencimento(2, 5, 2028);
 		Beneficiario beneficiario = Beneficiario.novoBeneficiario()
 				.comNomeBeneficiario("Caue").comAgencia("1824").comDigitoAgencia("4")
 				.comCodigoBeneficiario("76000").comNumeroConvenio("1207113")
@@ -100,7 +100,7 @@ public class BoletoHTMLTransformerIntegrationTest{
 
 	@Test
 	public void testHTMLWriterEscreveLinhaDigitavelCorreta() {
-		assertTrue(lerArquivo().contains("00190.00009 01207.113000 09000.206186 5 38600000004000"));
+		assertTrue(lerArquivo().contains("00190.00009 01207.113000 09000.206186 4 21650000004000"));
 	}
 	
 	private String lerArquivo() {

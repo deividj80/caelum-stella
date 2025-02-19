@@ -19,7 +19,7 @@ public class CodigoDeBarrasBuilderTest {
 	@Before
 	public void setUp() {
 		this.campoLivre = new StringBuilder("0000000000000000000000000");
-		Datas datas = Datas.novasDatas().comVencimento(01, 04, 2013);
+		Datas datas = Datas.novasDatas().comVencimento(01, 04, 2033);
 		this.boleto = Boleto.novoBoleto()
 			.comDatas(datas).comBanco(new Itau()).comValorBoleto(2680.16);
 		this.codigo = new CodigoDeBarrasBuilder(boleto);
@@ -28,7 +28,7 @@ public class CodigoDeBarrasBuilderTest {
 	@Test
 	public void deveGerarOCodigoFixoDoBoletoQuandoCriado() throws Exception {
 		String codigoFixo = codigo.comCampoLivre(campoLivre).substring(0, 19);
-		assertEquals("3419256550000268016", codigoFixo);
+		assertEquals("3419539600000268016", codigoFixo);
 		assertThat(codigoFixo, endsWith(boleto.getValorFormatado()));
 		String numeroDoBancoFormatado = boleto.getBanco().getNumeroFormatado();
 		assertThat(codigoFixo, startsWith(numeroDoBancoFormatado));
@@ -36,7 +36,7 @@ public class CodigoDeBarrasBuilderTest {
 	
 	@Test
 	public void deveInserirODigitoVerificadorGeralNa5Casa() throws Exception {
-		assertEquals("2", codigo.comCampoLivre(campoLivre).substring(4, 5));
+		assertEquals("5", codigo.comCampoLivre(campoLivre).substring(4, 5));
 	}
 	
 	@Test (expected=CriacaoBoletoException.class)
